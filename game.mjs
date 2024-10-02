@@ -114,8 +114,12 @@ async function askWantToPlayAgain() {
 
 function showGameSummary(outcome) {
     clearScreen();
-    let winningPlayer = (outcome > 0) ? 1 : 2;
-    print("Winner is player " + winningPlayer);
+    if (outcome == -10){
+        print("tie");
+    } else {
+        let winningPlayer = (outcome > 0) ? 1 : 2;
+        print("Winner is player " + winningPlayer);    
+    }
     showGameBoardWithCurrentState();
     print("GAME OVER");
 }
@@ -153,7 +157,40 @@ function evaluateGameState() {
         sum = 0;
     }
 
+    for (let diag = 0; diag < GAME_BOARD_SIZE; diag++) {
+        sum += gameboard[diag][diag];
+    }
+
+    if (Math.abs(sum) == 3) {
+        state = sum;
+    }
+    sum = 0;
+   
+    for (let diag = 0; diag < GAME_BOARD_SIZE; diag++) {
+        sum += gameboard[diag][2 - diag];
+    }
+
+    if (Math.abs(sum) == 3) {
+        state = sum;
+    }
+    sum = 0;
+    
     let winner = state / 3;
+    
+    let tie = true;
+  for (let col = 0; col < GAME_BOARD_SIZE; col++) {
+    for (let row = 0; row < GAME_BOARD_SIZE; row++) {
+      if (gameboard[col][row] == 0) {
+        tie = false;
+      }
+    }
+  }
+  if (tie == true) {
+    return -10;
+  }
+
+
+    
     return winner;
 }
 
