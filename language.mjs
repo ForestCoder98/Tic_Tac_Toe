@@ -16,7 +16,7 @@ const DICTIONARY = {
         GAMEMODE_SWITCH_INPUT: "Press 2 to switch gamemode",
         MARK_PLACEMENT_PROMPT: "Place your mark at: ",
         HUD_PLAYER_PROMPT_1: "One",
-        HUD_PLAYER_PROMPT_2: "Two";
+        HUD_PLAYER_PROMPT_2: "Two"
 
 
 
@@ -40,7 +40,7 @@ const DICTIONARY = {
         LANGUAGE_SWITCH_INPUT: "Tast 1 for å skifte språk",
         MARK_PLACEMENT_PROMPT: "Plasser ditt merke på plass: ",
         HUD_PLAYER_PROMPT_1: "En",
-        HUD_PLAYER_PROMPT_2: "To";
+        HUD_PLAYER_PROMPT_2: "To"
 
 
 
