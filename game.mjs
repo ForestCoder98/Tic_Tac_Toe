@@ -143,7 +143,8 @@ async function askWantToPlayAgain() {
 
 function showGameSummary(outcome) {
     clearScreen();
-    if (outcome == -10){
+    const TIE_CONDITION = -10;
+    if (outcome == TIE_CONDITION){
         print(language.TIE);
     } else {
         let winningPlayer = (outcome > 0) ? 1 : 2;
@@ -160,6 +161,9 @@ function changeCurrentPlayer() {
 function evaluateGameState() {
     let sum = 0;
     let state = 0;
+    const VICTORY_CONDITION = 3;
+    const TIE_CONDITION = -10;
+    const EMPTY_POSITION = 0;
 
     for (let row = 0; row < GAME_BOARD_SIZE; row++) {
 
@@ -167,7 +171,7 @@ function evaluateGameState() {
             sum += gameboard[row][col];
         }
 
-        if (Math.abs(sum) == 3) {
+        if (Math.abs(sum) == VICTORY_CONDITION) {
             state = sum;
         }
         sum = 0;
@@ -179,7 +183,7 @@ function evaluateGameState() {
             sum += gameboard[row][col];
         }
 
-        if (Math.abs(sum) == 3) {
+        if (Math.abs(sum) == VICTORY_CONDITION) {
             state = sum;
         }
 
@@ -190,7 +194,7 @@ function evaluateGameState() {
         sum += gameboard[diag][diag];
     }
 
-    if (Math.abs(sum) == 3) {
+    if (Math.abs(sum) == VICTORY_CONDITION) {
         state = sum;
     }
     sum = 0;
@@ -199,23 +203,23 @@ function evaluateGameState() {
         sum += gameboard[diag][2 - diag];
     }
 
-    if (Math.abs(sum) == 3) {
+    if (Math.abs(sum) == VICTORY_CONDITION) {
         state = sum;
     }
     sum = 0;
     
-    let winner = state / 3;
+    let winner = state / VICTORY_CONDITION;
     
     let tie = true;
   for (let col = 0; col < GAME_BOARD_SIZE; col++) {
     for (let row = 0; row < GAME_BOARD_SIZE; row++) {
-      if (gameboard[col][row] == 0) {
+      if (gameboard[col][row] == EMPTY_POSITION) {
         tie = false;
       }
     }
   }
   if (tie == true) {
-    return -10;
+    return TIE_CONDITION;
   }
 
 
