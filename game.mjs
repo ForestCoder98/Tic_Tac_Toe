@@ -97,8 +97,7 @@ async function settings(){
     if (playerResponse == languageSwitch) {
         if (language == DICTIONARY.en){
             language = DICTIONARY.no;
-        }
-        if (language == DICTIONARY.no){
+        } else {
             language = DICTIONARY.en;
         }
         
@@ -107,8 +106,7 @@ async function settings(){
         if (pve == false){
             pve = true;
         }
-        if (pve == true){
-            pve = false;
+        else pve = false;{
         }
         
     }
@@ -231,7 +229,23 @@ function updateGameBoardState(move) {
     gameboard[move[ROW_ID]][move[COLUMN_ID]] = currentPlayer;
 }
 
+function getGameMoveFromComputer(){
+    let computerMaxNumber = 2
+    let column = 0;
+    let row = 0;
+    let selectedRandomComputerPosition = "";
+    do {
+        row = Math.floor(Math.random() * computerMaxNumber);
+        column = Math.floor(Math.random() * computerMaxNumber);
+        selectedRandomComputerPosition = (column + " " + row).split(" ");
+    } while (isValidPositionOnBoard(selectedRandomComputerPosition) == false);
+    return selectedRandomComputerPosition;
+}
+
 async function getGameMoveFromtCurrentPlayer() {
+    if (currentPlayer == PLAYER_2 && pve){
+        return getGameMoveFromComputer();
+    }  
     let position = null;
     do {
         let rawInput = await askQuestion(language.MARK_PLACEMENT_PROMPT);
@@ -240,7 +254,7 @@ async function getGameMoveFromtCurrentPlayer() {
         position[1] = position[1] - 1;
     } while (isValidPositionOnBoard(position) == false)
 
-    return position
+    return position 
 }
 
 function isValidPositionOnBoard(position) {
@@ -281,12 +295,12 @@ function showGameBoardWithCurrentState() {
         for (let currentCol = 0; currentCol < GAME_BOARD_SIZE; currentCol++) {
             let cell = gameboard[currentRow][currentCol];
             if (cell == 0) {
-                rowOutput += "_ ";
+                rowOutput += "\x1b[33m <> ";
             }
             else if (cell > 0) {
-                rowOutput += "X ";
+                rowOutput += "\x1b[34m X ";
             } else {
-                rowOutput += "O  ";
+                rowOutput += "\x1b[31m O ";
             }
         }
 

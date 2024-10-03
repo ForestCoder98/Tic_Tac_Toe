@@ -8,21 +8,15 @@ const DICTIONARY = {
         SETTINGS: "2. Settings",
         EXIT_GAME: "3. Exit game",
         TIE: "Tie",
-        WINNER_IS: "The winner is player",
-        GAME_OVER: "Game over",
-        PLAYER: "Player",
-        TURN_PROMPT: "It is your turn",
+        WINNER_IS: "\x1b[33m The winner is player",
+        GAME_OVER: "\x1b[33m Game over",
+        PLAYER: "\x1b[33m Player",
+        TURN_PROMPT: " It is your turn",
         LANGUAGE_SWITCH_INPUT: "Press 1 to switch language",
         GAMEMODE_SWITCH_INPUT: "Press 2 to switch gamemode",
         MARK_PLACEMENT_PROMPT: "Place your mark at: ",
-        HUD_PLAYER_PROMPT_1: "One",
-        HUD_PLAYER_PROMPT_2: "Two"
-
-
-
-
-
-
+        HUD_PLAYER_PROMPT_1: "One,",
+        HUD_PLAYER_PROMPT_2: "Two,"
 
     },
     no: {
@@ -33,23 +27,15 @@ const DICTIONARY = {
         SETTINGS: "2. Innstillinger",
         EXIT_GAME: "3. Avslutt spill",
         TIE: "Uavgjort",
-        WINNER_IS: "Vinneren er spiller",
-        GAME_OVER: "Spillet er over",
-        PLAYER: "Spiller",
-        TURN_PROMPT: "Det er din tur",
+        WINNER_IS: "\x1b[33m Vinneren er spiller",
+        GAME_OVER: "\x1b[33m Spillet er over",
+        PLAYER: "\x1b[33m Spiller ",
+        TURN_PROMPT: " Det er din tur",
         LANGUAGE_SWITCH_INPUT: "Tast 1 for å skifte språk",
+        GAMEMODE_SWITCH_INPUT: "Tast 2 for å skifte spillmodus",
         MARK_PLACEMENT_PROMPT: "Plasser ditt merke på plass: ",
-        HUD_PLAYER_PROMPT_1: "En",
-        HUD_PLAYER_PROMPT_2: "To"
-
-
-
-
-
-
-
-
-
+        HUD_PLAYER_PROMPT_1: "En,",
+        HUD_PLAYER_PROMPT_2: "To,"
 
     }
 }
